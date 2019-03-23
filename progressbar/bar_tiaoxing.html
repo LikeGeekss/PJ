@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>条形进度条</title>
+    <meta http-equiv=Content-Type content="text/html; charset=utf-8">
+    <meta name="content-type" content="text/html; charset=UTF-8">  
+    <script src="https://cdn.staticfile.org/jquery/2.0.0/jquery.min.js"></script>
+    <!-- 滚动条样式 -->
+    <style type="text/css">
+      .progress-bg {
+        width: 50%;
+        height: 30px;                       /*固定高度*/
+        border: 1px  solid #ccc;  
+        overflow: hidden;                   /*将填充区域溢出部分隐藏*/      
+        border-radius: 15px; 
+        box-shadow: 0 0 5px 0px #ddd inset;
+      }
+      .progress-fill {
+        display: block;
+        width: 0%;                        /*控制该样式显示进度*/  
+        height: 100%;                       /*填充父元素*/ 
+        background-color: rgb(0, 221, 170);   
+        transition: width 2s ease-in;       /*实现进度条缓动动画*/
+        text-align: center;
+      }
+      .progress-fill-gd {
+        /*通过http://www.colorzilla.com/gradient-editor/ 在线生成的渐变样式代码*/
+        background: #328bff; /* Old browsers */
+        background: -moz-linear-gradient(45deg,  #328bff 30%, #d3e6ff 33%, #d3e6ff 66%, #328bff 67%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(45deg,  #328bff 30%,#d3e6ff 33%,#d3e6ff 66%,#328bff 67%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(45deg,  #328bff 30%,#d3e6ff 33%,#d3e6ff 66%,#328bff 67%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#328bff', endColorstr='#328bff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+        background-size: 60px 30px; /*注意，需要设置该属性对应的尺寸 才能正确的显示重复效果*/
+	    
+        color: #fffff;
+      }         
+    </style>
+    
+  </head>
+  <body>
+     <!-- 普通滚动条html -->
+    <div class="progress-bg">
+      <span class="progress-fill">0%</span>
+    </div>
+    
+    <br><br><br>
+    <!-- 渐变样式滚动条 -->
+    <div class="progress-bg">
+      <span class="progress-fill progress-fill-gd">0%</span>
+    </div>
+
+    
+    <!-- 普通滚动条JS -->
+    <script type="text/javascript">
+      function setProgressBar(selector, v){
+        $(selector).css('width', v + '%').text(v);
+      }
+    </script>
+    
+    
+    
+    <!-- 测试代码 -->
+    <script type="text/javascript">
+      $(document).ready(function() {
+      	setTimeout(function() {
+           setProgressBar('.progress-fill', 100);
+      	}, 1500);
+      });
+    </script>
+  </body>
+</html>
